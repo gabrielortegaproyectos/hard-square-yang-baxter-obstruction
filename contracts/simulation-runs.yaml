@@ -1,0 +1,11 @@
+version: 1
+# Contrato de una corrida de verificación (una ejecución de un escenario de
+# config/simulations/scenarios.yaml). Cada registro declara:
+#   run_id:       identificador estable (para corridas de CI: ci-<id de GitHub Actions>)
+#   scenario_id:  escenario ejecutado (default | full)
+#   git_commit:   commit verificado
+#   environment:  Python y versiones fijadas por uv.lock
+#   output:       URI del artefacto `verify-output` del workflow Verify certificates
+#   result:       passed | failed, con el número de comprobaciones [PASS]
+# Las salidas no se versionan en data/: el artefacto de CI es la evidencia.
+runs: []

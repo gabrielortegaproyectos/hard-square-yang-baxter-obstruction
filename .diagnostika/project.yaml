@@ -1,0 +1,13 @@
+schema_version: 1
+project:
+  name: hard-square-yang-baxter-obstruction
+  type: simulation-project
+  client: ''
+  description: >-
+    Exact computations for the paper "A local Yang-Baxter obstruction for the
+    hard-square model".
+template:
+  repository: Diagnostika-Labs/template-simulation-project
+  ref: v0.1.0-rc.2
+  revision: 7fbea83aebb3f7dda8e98759e91c706a358a7792
+release_status: candidate; review pending

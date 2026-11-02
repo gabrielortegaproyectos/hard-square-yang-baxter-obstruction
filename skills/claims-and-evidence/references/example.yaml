@@ -1,0 +1,13 @@
+# Ejemplo sintético propuesto: las rutas se crean al ejecutar, no son evidencia real.
+claim_id: synthetic_temporal_generalization
+statement: El modelo podría generalizar al siguiente periodo.
+claim_type: hypothesis
+status: proposed
+lifecycle: active
+scope: Cohorte sintética y protocolo temporal v1
+limitations: [Sin ejecución todavía]
+evidence: []
+provenance:
+  protocol: config/temporal-v1.yaml
+# evidence_map.yaml registra evidence_id, kind, path/uri, run_id, config,
+# git_commit, sha256 y localizador (tabla/figura/página/slide) si corresponde.

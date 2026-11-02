@@ -1,0 +1,22 @@
+version: 1
+# Escenarios de verificación de Paper 1. Son corridas deterministas: aritmética
+# exacta (sympy) y combinatoria entera, sin semillas ni parámetros aleatorios.
+# Las dos únicas comprobaciones en punto flotante son la calibración RSOS y su
+# forma escalonada, y están marcadas "(float)" en la salida.
+scenarios:
+  - scenario_id: default
+    description: Todas las comprobaciones salvo los dos cruces lentos.
+    arguments: []
+    command: uv run python verify_certificates.py
+    seeds: []
+    expected: "40 checks [PASS] y 'All checks passed.'"
+    approximate_runtime: "15 s"
+  - scenario_id: full
+    description: >-
+      Agrega el cruce por bases de Gröbner del teorema de soporte casi completo
+      y la búsqueda exhaustiva que ilustra la clasificación (no la prueba).
+    arguments: ["--groebner", "--classify"]
+    command: uv run python verify_certificates.py --groebner --classify
+    seeds: []
+    expected: "42 checks [PASS] y 'All checks passed.'"
+    approximate_runtime: "1 min"

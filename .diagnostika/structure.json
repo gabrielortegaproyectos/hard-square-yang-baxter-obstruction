@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "project_type": "simulation-project",
+  "required_paths": [
+    ".diagnostika/project.yaml",
+    ".diagnostika/skills.lock.json",
+    ".gitattributes",
+    ".github/workflows/validate.yml",
+    ".gitignore",
+    "AGENTS.md",
+    "README.md",
+    "claims/claim_registry.yaml",
+    "claims/evidence_map.yaml",
+    "config/README.md",
+    "config/simulations/scenarios.yaml",
+    "contracts/README.md",
+    "contracts/simulation-runs.yaml",
+    "data/.gitkeep",
+    "data/simulations/.gitkeep",
+    "docs/architecture.md",
+    "docs/decisions/README.md",
+    "docs/simulations/README.md",
+    "docs/simulations/sensitivity.md",
+    "pyproject.toml",
+    "scripts/validate_structure.py",
+    "src/project/__init__.py",
+    "src/project/simulation.py",
+    "tests/test_structure.py"
+  ],
+  "skills": [
+    "claims-and-evidence",
+    "data-contracts",
+    "experiment-design",
+    "repository-architecture",
+    "reproducibility",
+    "scientific-documentation"
+  ],
+  "forbidden_roots": [
+    ".criterium",
+    "criteria",
+    "reports",
+    "reporting",
+    "training"
+  ]
+}

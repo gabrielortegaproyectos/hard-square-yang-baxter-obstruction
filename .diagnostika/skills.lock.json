@@ -1,0 +1,25 @@
+{
+  "repository": "Diagnostika-Labs/agent-skills",
+  "ref": "v0.2.0-rc.1",
+  "revision": "c8578515fb8fb5a07d7fa00416e3d26e276d27e7",
+  "review_status": "candidate; upstream PR #2 remains unmerged",
+  "skills": [
+    "claims-and-evidence",
+    "data-contracts",
+    "experiment-design",
+    "repository-architecture",
+    "reproducibility",
+    "scientific-documentation"
+  ],
+  "files": {
+    "claims-and-evidence/references/example.yaml": "0af286933a1be478cbc0b64892c17df80fa148da71b09235e9f6289332a509f1",
+    "claims-and-evidence/scripts/validate_references.py": "cc2edb188d7495d6abf0a4986dcb4ad7f22f5e6b919b727b7bfcd4ed9d5639ab",
+    "claims-and-evidence/SKILL.md": "9a7907e91d5effc6f5e711e49f825847a767ccdae6d17d1c1a622084e09c8e7a",
+    "data-contracts/SKILL.md": "72c6ea1a60e9fa606af57861d3ab9da7e9093048bc1f8ce3bd16d705726f68aa",
+    "experiment-design/SKILL.md": "f505c74f74359b59c8813183de0b3a1c5f8c4013df2d6b49aa78a578c73cbcee",
+    "repository-architecture/SKILL.md": "582dcb305e6986ff0d7b75cffc0eca8de5b7c7a382664df902df4821cae141d1",
+    "reproducibility/SKILL.md": "1cbe7c1c0a3b2cc7dc51abdefdf890c4220aaffc970b5743fee8e2092b0c0a1a",
+    "scientific-documentation/references/manuscripts.md": "5b5e5f33fc61216419489247b6aec6aa6aa200ef286b2e7cb11fdb655ed4985d",
+    "scientific-documentation/SKILL.md": "92c60d60f4021a965d3689417c840b5289104d127fb3a3337657d90d211bceb2"
+  }
+}

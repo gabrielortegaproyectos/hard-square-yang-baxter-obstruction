@@ -1,0 +1,19 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+*.pdf
+verify-output.txt
+data/**
+!data/**/
+!data/**/.gitkeep
+# Copias de skills fuera de skills/ (anclado a la raíz para no ignorar el snapshot versionado)
+/claims-and-evidence/
+/data-contracts/
+/experiment-design/
+/repository-architecture/
+/reproducibility/
+/scientific-documentation/

@@ -1,0 +1,36 @@
+name: Verify certificates
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Install the pinned environment
+        run: uv sync --frozen
+
+      - name: Run all checks
+        run: uv run python verify_certificates.py --groebner --classify | tee verify-output.txt
+
+      - name: Fail on any failed check
+        run: |
+          grep -q "All checks passed." verify-output.txt
+          ! grep -q "\[FAIL\]" verify-output.txt
+
+      - name: Tests
+        run: uv run pytest -m "not slow"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: verify-output
+          path: verify-output.txt

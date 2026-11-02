@@ -1,0 +1,136 @@
+version: 1
+# Claims computacionales de Paper 1. "supported" significa que la comprobación
+# correspondiente pasa en el escenario indicado; no reemplaza las pruebas del
+# paper, que se leen sin el script. Numeración: borrador del 2026-10-02.
+claims:
+  - claim_id: binary-certificate
+    statement: >-
+      Con una cara hard-square pura de factores de esquina no nulos, exactamente
+      18 de las 64 ecuaciones de Yang-Baxter binarias son no triviales, y la
+      combinación de (3.1)-(3.7) da la identidad (3.8) que fuerza r5 p3 r2 = 0
+      (Teorema 3.1). Con pesos no escalonados y rho = 1, la misma combinación que
+      en A4 da A^2 D r5 p2 r3 (observación tras el Teorema 3.3).
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Alfabeto binario, ecuación sin factor escalar; Observación 3.2 para el factor escalar.
+    limitations: [Comprobación de las identidades algebraicas; la deducción lógica está en el paper.]
+    evidence: [verify-script, claims-map, ci-verify]
+    provenance: {paper_draft: "2026-10-02", program_commit: 7d9d37e}
+  - claim_id: near-full-support
+    statement: >-
+      Las dos ramas tóricas (3.19) y (3.20) satisfacen las 18 ecuaciones y son la
+      única solución en cada soporte, comparada con (3.19) y (3.20); el cruce de Gröbner confirma que no hay otros
+      conjuntos de ceros de tamaño a lo sumo 2 (Teorema 3.7). Salvo factores de esquina de
+      producto 1, las ramas son (cara pura, delta_{b,c}) y (delta_{b,c}, cara pura).
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Alfabeto binario.
+    limitations: [El cruce de Gröbner solo corre en el escenario full y no forma parte de la prueba.]
+    evidence: [verify-script, scenarios, ci-verify]
+    provenance: {paper_draft: "2026-10-02", program_commit: 7d9d37e}
+  - claim_id: a4-certificate
+    statement: >-
+      En A4, 36 de las 128 ecuaciones escalonadas son no triviales; G1-G5 son las
+      combinaciones indicadas y la identidad (3.17) fuerza r5 p2 r3 = 0 en el tipo 0
+      (Teorema 3.3), con simetría bajo el intercambio de tipos.
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Alfabeto A4 con factores rho0, rho1 por tipo.
+    limitations: [Comprobación de identidades; la reducción a la forma escalonada es el claim staggered-form.]
+    evidence: [verify-script, claims-map, ci-verify]
+    provenance: {paper_draft: "2026-10-02", program_commit: 7d9d37e}
+  - claim_id: staggered-form
+    statement: >-
+      Construida desde las alturas 1-4 de A4, con P, Q, R arbitrarios tipo por tipo,
+      la ecuación (2.2) es el sistema escalonado (2.6) (Lema 2.12). Con cara media
+      (s0 Q0, s1 Q1), cada una de las 36 ecuaciones no nulas es s_alpha veces la de
+      (2.6) con rho_alpha = rho s_{1-alpha}/s_alpha (Sección 3.2). Las ocho simetrías
+      del cuadrado llevan caras hard-square puras escalonadas a caras del mismo tipo
+      (observación tras el Teorema 3.3).
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Alfabeto A4.
+    limitations: [Aritmética exacta en sympy; las pruebas del lema y de la observación están en el paper.]
+    evidence: [verify-script, claims-map, ci-verify]
+    provenance: {paper_draft: "2026-10-29", program_commit: null}
+  - claim_id: rsos-calibration
+    statement: >-
+      Los pesos RSOS críticos de A4 satisfacen la ecuación de Yang-Baxter de caras
+      en la convención del paper, y también su forma escalonada (Ejemplo 2.13, Lema 2.12).
+    claim_type: methodology
+    status: supported
+    lifecycle: active
+    scope: Cuatro pares (u, v) de parámetros espectrales.
+    limitations: [Punto flotante, residuo por debajo de 1e-15; calibra la convención, no prueba un teorema.]
+    evidence: [verify-script, ci-verify]
+    provenance: {paper_draft: "2026-10-02", program_commit: 7d9d37e}
+  - claim_id: critical-hard-hexagons
+    statement: >-
+      Los pesos RSOS críticos de A4 llevados a ocupaciones no dependen del tipo, y en
+      u = -lambda dan w6 = 0, w4 w0 = w3 w2 y z = (11 + 5 sqrt 5)/2: presentan hard
+      hexagons en su actividad crítica (Ejemplo 2.13).
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Familia RSOS crítica del Ejemplo 2.13.
+    limitations: [Aritmética exacta en sympy; que la familia cumpla la ecuación de Yang-Baxter sigue siendo la comprobación de punto flotante.]
+    evidence: [verify-script, claims-map, ci-verify]
+    provenance: {paper_draft: "2026-10-26", program_commit: null}
+  - claim_id: lifts-and-fibre-sums
+    statement: >-
+      En T2 y T4 hay 7 y 743 configuraciones hard-square y 14 y 1486 homomorfismos
+      a P4, con cada fibra una órbita de sigma de tamaño 2 (Ejemplo 2.4(2)); los pesos
+      usados en la prueba de la Proposición 2.10 son los indicados; y T1 T0 G1 =
+      G1 (C_M Z_M)^2 para M = 4, 6 (Observación 2.11).
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Toros T2, T4, T6, T8 y cilindros de circunferencia 4 y 6.
+    limitations: [Casos finitos que acompañan pruebas generales del paper.]
+    evidence: [verify-script, claims-map, ci-verify]
+    provenance: {paper_draft: "2026-10-02", program_commit: 7d9d37e}
+  - claim_id: blocked-alphabet
+    statement: >-
+      El alfabeto bloqueado tiene 41 caras admisibles (Sección 4.1) y cumple la
+      obstrucción de una ecuación (Teorema 4.1); con pesos también sobre F_V (35 caras)
+      la ecuación del Teorema 4.1 no cambia (observación tras el Corolario 4.2).
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Bloques de dos sitios.
+    limitations: [Comprobación de conteos e identidades; los argumentos analíticos están en el paper.]
+    evidence: [verify-script, claims-map, ci-verify]
+    provenance: {paper_draft: "2026-10-02", program_commit: 7d9d37e}
+  - claim_id: full-binary-certificate
+    statement: >-
+      En el alfabeto binario con 1~1 (16 caras), con cara media igual a la cara
+      hard-square pura en las 7 caras admisibles y 0 en las otras 9, las 12
+      ecuaciones de la prueba de la Proposición 4.3 son las indicadas, y
+      rho A^2 B C D p2 p4 r3 r4 r5 es la combinación polinomial indicada de ellas.
+      Esas ecuaciones sólo usan los ceros de la cara media en cinco caras, y el
+      conjunto alternativo de ceros de la observación tras la Proposición 4.3 anula
+      exactamente las configuraciones no hard-square en T2, T3 y T4.
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Alfabeto binario con 1~1, pesos auxiliares en las 16 caras.
+    limitations: [Comprobación de la identidad; el argumento analítico está en el paper.]
+    evidence: [verify-script, claims-map, ci-verify]
+    provenance: {paper_draft: "2026-10-26", program_commit: null}
+  - claim_id: classification-illustration
+    statement: >-
+      De los 86 828 alfabetos etiquetados conexos con 2 a 5 alturas, con alturas
+      ocupadas y vacías y sin alturas ocupadas adyacentes, sobreviven exactamente dos
+      clases de isomorfía al filtro de preimágenes en el toro 4x4; comparadas por
+      isomorfía, con la ocupación, son el binario y A4.
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Alfabetos con a lo sumo cinco alturas; escenario full.
+    limitations: [Ilustra la Proposición 2.5, que se prueba en el texto; no es parte de la prueba.]
+    evidence: [verify-script, scenarios, ci-verify]
+    provenance: {paper_draft: "2026-10-02", program_commit: 7d9d37e}

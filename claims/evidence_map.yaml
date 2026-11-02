@@ -1,0 +1,22 @@
+version: 1
+evidence:
+  - evidence_id: verify-script
+    kind: code
+    path: verify_certificates.py
+    description: >-
+      Script canónico de verificación, idéntico byte a byte al archivo auxiliar
+      de arXiv. Cada comprobación imprime [PASS] o [FAIL].
+  - evidence_id: claims-map
+    kind: document
+    path: CLAIMS_MAP.md
+    description: Correspondencia entre cada enunciado del paper y la comprobación que lo cubre.
+  - evidence_id: scenarios
+    kind: config
+    path: config/simulations/scenarios.yaml
+    description: Escenarios default (40 comprobaciones) y full (42 comprobaciones).
+  - evidence_id: ci-verify
+    kind: workflow
+    path: .github/workflows/verify.yml
+    description: >-
+      Workflow que ejecuta el escenario full con el entorno fijado y publica el
+      artefacto verify-output.
