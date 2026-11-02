@@ -6,8 +6,15 @@ authors:
   - family-names: Ortega
     given-names: Gabriel
     affiliation: "Universidad de Chile"
-version: 0.9.0
-date-released: 2026-10-02
+abstract: >-
+  Exact checks of the finite statements in the paper "A local Yang-Baxter
+  obstruction for the hard-square model": the equations and polynomial
+  certificates on the binary alphabet and on the hard-hexagon alphabet A_4,
+  the calibration against the critical RSOS model, and the remaining finite
+  computations listed in its Appendix A. Every proof in the paper can be read
+  without the script, which only guards against arithmetic slips.
+version: 1.0.0
+date-released: 2026-11-02
 license: MIT
 repository-code: "https://github.com/gabrielortegaproyectos/hard-square-yang-baxter-obstruction"
 keywords:
