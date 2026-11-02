@@ -4,6 +4,10 @@ This repository reproduces every finite computation in the paper
 *A local Yang–Baxter obstruction for the hard-square model*
 (G. Ortega, preprint in preparation).
 
+Archived on Zenodo: version 1.0.0,
+[doi:10.5281/zenodo.23892182](https://doi.org/10.5281/zenodo.23892182); all
+versions, [doi:10.5281/zenodo.23892181](https://doi.org/10.5281/zenodo.23892181).
+
 The paper shows that no analytic Yang–Baxter family of face weights passes
 through hard squares at nonzero activity on either of the two connected height
 alphabets that encode the model without hidden heights. The computations here
@@ -50,7 +54,8 @@ run `python verify_certificates.py`.
 - **Same script as on arXiv.** `verify_certificates.py` is the ancillary file
   of the arXiv submission, byte for byte (LF line endings).
 - **Releases follow the paper versions:** `v1.0.0` for arXiv v1, `v1.1.0`
-  for a revision, and so on.
+  for a revision, and so on. Each release is archived on Zenodo with its own
+  DOI.
 
 ## Repository structure
 
