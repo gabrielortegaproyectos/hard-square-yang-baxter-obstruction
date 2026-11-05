@@ -50,6 +50,24 @@ run `python verify_certificates.py`.
   against the critical RSOS model, which are floating point and labelled as
   such.
 
+## Exploratory computation: commuting transfer matrices
+
+`src/project/commuting.py` asks which binary seven-weight faces have row transfer
+matrices commuting with that of hard squares, `[T_N(Q), T_N(W)] = 0`, without assuming
+any local relation (the question of Section 5.2 of the J. Phys. A version). For
+`N = 4, …, 7` and every activity `z != 0`, only the evident ones do: multiples of `Q`
+and the shift and its inverse. A positive control with hard hexagons recovers a curve of
+commuting partners on Baxter's integrable surface. This computation is not part of the
+paper or of the arXiv ancillary file. Method, results and limits are in
+[`docs/simulations/commuting-small-n.md`](docs/simulations/commuting-small-n.md).
+
+```bash
+uv run python -m project.commuting
+```
+
+- **Default run:** about 20 seconds (`N <= 6`, tangent space up to `N = 9`).
+- **`--long`:** about 3 minutes; adds `N = 7` and the tangent space up to `N = 12`.
+
 ## Relation to the paper
 
 - **Same script as on arXiv.** `verify_certificates.py` is the ancillary file
@@ -70,6 +88,7 @@ The repository follows the Diagnostika Labs template `simulation-project`
 | `contracts/simulation-runs.yaml` | what a recorded run must declare |
 | `claims/` | the computational claims and the evidence that supports them |
 | `src/project/simulation.py` | runs a scenario: `uv run python -m project.simulation full` |
+| `src/project/commuting.py` | the exploratory commutation computation (protocol in `config/simulations/commuting-small-n.yaml`) |
 | `skills/` | pinned agent-skill snapshot (hashes in `.diagnostika/skills.lock.json`) |
 
 Validate the structure with `uv run python scripts/validate_structure.py`.
