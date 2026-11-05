@@ -2,7 +2,8 @@
 
 This repository reproduces every finite computation in the paper
 *A local Yang–Baxter obstruction for the hard-square model*
-(G. Ortega, preprint in preparation).
+(G. Ortega and E. Peña-Ancavil,
+[arXiv:2611.06780](https://arxiv.org/abs/2611.06780)).
 
 Archived on Zenodo: version 1.0.0,
 [doi:10.5281/zenodo.23892182](https://doi.org/10.5281/zenodo.23892182); all
