@@ -88,5 +88,7 @@ of the J. Phys. A version; see
 | Tangent space at `Q` is trivial for `5 <= N <= 9` (`12` with `--long`) at five activities | `z=...: tangent dimensions ...` |
 | Positive control: hard hexagons have a curve of commuting partners on Baxter's surface | the full support carries a curve of commuting partners, on Baxter's surface F = 0; the curve is the same for every N computed |
 | Independent cross-check, `python -m project.commuting_crosscheck` | `z=..., N=4,5,6`: only the classes of T_N(Q0), S, S^-1; Q0 double at N=4, reduced from N=5; Jacobian ranks |
-| Nine weights (vertical-pair faces), `python -m project.commuting_extended` | `N=6`: every commuting T_6(W) is a multiple of K, S, S^-1, I, K S or K S^-1; a multiple of K only without the vertical pair |
-| Sixteen faces | `det C_N = +-1`; `T_N(Q-hat) = T_N(Q) (+) 0`; the decoupled family `Q-hat + u[1111]` commutes for every u |
+| A_4, `python -m project.commuting_a4`: every presentation reduces to `Q0 (+) Q0`; six trivial symmetries | `M=4: the six trivial symmetries multiply T_M by lam^M, ...` |
+| A_4: near a presentation, only the trivial directions commute, for `M = 6, 8` (`10` with `--long`) at five activities | `M=...: tangent dimension ... (only the six trivial directions)` |
+| A_4: the same for every `z != 0` with `M = 6` | `over Q[z], the gcd of the 8 x 8 minors ... divides z**...` |
+| A_4 control: hard hexagons on both types have one more, unstaggered, direction | `hard hexagons ... one more direction, and it is unstaggered` |

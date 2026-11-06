@@ -62,7 +62,7 @@ def test_n6_only_evident_solutions_for_every_z():
 # Independent cross-check and extension beyond the seven weights
 # ---------------------------------------------------------------------------
 from project import commuting_crosscheck as cc  # noqa: E402
-from project import commuting_extended as ce  # noqa: E402
+from project import commuting_a4 as a4  # noqa: E402
 
 
 def test_crosscheck_n5_new_activity():
@@ -80,30 +80,31 @@ def test_crosscheck_full():
     assert cc.main() == 0
 
 
-@pytest.mark.parametrize("N", [3, 4, 5])
-def test_nine_weight_evident_partners(N):
-    z = sp.symbols("z")
-    K = ce.tm9(ce.q9(z), N)
-    assert ce.tm9(ce.EVIDENT["I"], N) == sp.eye(K.rows)
-    assert ce.tm9([1, 1, 1, 1, 0, z, z, z, 1], N) == K * ce.tm9(ce.EVIDENT["S"], N)
+# ---------------------------------------------------------------------------
+# The alphabet A_4, near a presentation of hard squares
+# ---------------------------------------------------------------------------
+def test_a4_symmetries_similarity_and_reduction():
+    assert a4.check_reduction(4)
 
 
-def test_nine_weights_n4_has_sporadic_solution():
-    cl = ce.classify9(4, sp.Integer(2))
-    assert ce.EXPECTED_CLASSES <= set(cl) and len(set(cl) - ce.EXPECTED_CLASSES) == 1
+@pytest.mark.parametrize("zval", [sp.Integer(2), sp.Integer(-1), sp.Rational(1, 3)])
+def test_a4_tangent_is_trivial_from_m6(zval):
+    cols6 = a4.log_columns(6)
+    assert a4.log_tangent_dimension(4, zval) == 7
+    assert a4.log_tangent_dimension(6, zval, cols6) == 6
+
+
+def test_a4_plain_coordinates_and_staggered_presentation():
+    assert a4.tangent(a4.q0(2), a4.q0(2), 6)[:2] == (6, 6)
+    assert a4.tangent(*a4.staggered_presentation(sp.Integer(2)), 6)[:2] == (6, 6)
+
+
+def test_a4_hard_hexagon_control():
+    H = [1, 1, 1, 1, 1, 2, 0]
+    tan, orb, ker = a4.tangent(H, H, 6)
+    assert (tan, orb) == (7, 6) and a4.unstaggered_extra(H, H, ker)
 
 
 @pytest.mark.slow
-def test_nine_weights_n6_only_evident():
-    cl = ce.classify9(6, sp.Integer(2))
-    assert set(cl) == ce.EXPECTED_CLASSES
-    assert all(not set(ce.VERTICAL) <= set(S) for S in cl["K"])
-
-
-@pytest.mark.parametrize("N", [3, 4])
-def test_sixteen_faces_block_and_decoupled_family(N):
-    assert all(ce.check_sixteen(N))
-
-
-def test_compatibility_determinants():
-    assert all(abs(ce.compatibility_det(N)) == 1 for N in range(2, 10))
+def test_a4_tangent_trivial_for_every_z():
+    assert a4.nontrivial_minors_gcd(6) == a4.z ** 12

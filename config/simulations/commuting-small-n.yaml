@@ -32,30 +32,35 @@ method:
     src/project/commuting_crosscheck.py, sin importar el primer módulo: ecuaciones del
     producto explícito de matrices, otro corte de gauge, bases grevlex con F5B, z = 3,
     -2/7 y 5/2, clasificación de T_N(W) en cada punto y jacobiano simbólico.
-  extension: >-
-    src/project/commuting_extended.py: nueve pesos (más las caras de par vertical) sobre
-    filas hard-square, con clasificación de T_N(W) frente a K, S, S^-1, I, K S y K S^-1;
-    dieciséis caras por la estructura de bloques T_N(Q-hat) = T_N(Q) (+) 0.
+  a4: >-
+    src/project/commuting_a4.py: en A_4, tangente del conjunto de soluciones en una
+    presentación de hard squares. Reducción a Q0 (+) Q0, seis simetrías triviales, rango
+    exacto a z fijo y menores 8 x 8 sobre Q[z]; control con hard hexagons en ambos tipos.
 parameters:
   global_sizes: {default: [2, 3, 4, 5, 6], long: [2, 3, 4, 5, 6, 7]}
   tangent_sizes: {default: "2..9", long: "2..12"}
   tangent_symbolic_sizes: [5, 6]
   tangent_activities: ["2", "-1", "1/3", "-1/4", "7/5"]
   control_sizes: {default: [4, 5], long: [4, 5, 6]}
+  a4_sizes: {default: [4, 6, 8], long: [4, 6, 8, 10]}
+  a4_symbolic_sizes: [6]
 command:
   default: uv run python -m project.commuting
   long: uv run python -m project.commuting --long
   crosscheck: uv run python -m project.commuting_crosscheck
-  extension: uv run python -m project.commuting_extended [--long]
+  a4: uv run python -m project.commuting_a4 [--long]
 expected: "Todas las líneas [PASS] y 'All checks passed.'"
-approximate_runtime: {default: "20 s", long: "3 min", crosscheck: "40 s", extension: "70 s; --long unos 3 min"}
+approximate_runtime: {default: "20 s", long: "3 min", crosscheck: "40 s", a4: "1 min; --long 1,5 min"}
 deviations:
   - >-
     Las corridas exploratorias se hicieron el 2026-11-05 en una carpeta temporal antes
     de escribir este protocolo, con el mismo método y los mismos valores de z. El
     módulo las reproduce; al ser un cálculo exacto no hubo parámetros que ajustar.
   - >-
-    El cruce independiente y la extensión se agregaron el 2026-11-06 a pedido del autor,
-    después de ver los resultados del primer módulo. El cruce iba a usar z simbólico, pero
-    con F5B resultó demasiado lento y se pasó a tres actividades fijas.
+    El cruce independiente y el cálculo en A_4 se agregaron el 2026-11-06 a pedido del
+    autor, después de ver los resultados del primer módulo. El cruce iba a usar z
+    simbólico, pero con F5B resultó demasiado lento y se pasó a tres actividades fijas.
+    Una extensión a nueve y dieciséis caras binarias se calculó y se retiró el mismo día,
+    porque no responde una pregunta del paper (commit b897c79). En A_4 se hizo solo la
+    parte local, que es la que corresponde al Teorema B; la global no es factible con sympy.
 results: docs/simulations/commuting-small-n.md

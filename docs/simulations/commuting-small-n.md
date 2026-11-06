@@ -119,57 +119,43 @@ Para N = 4, 5 y 6 da lo mismo que el primer método:
 Con N = 4, cada soporte de desplazamiento tiene dos órbitas, δ y su variante con signo.
 Ambas dan T_4 = S (o S⁻¹).
 
-## Más allá de los siete pesos
+## El alfabeto A_4, cerca de hard squares
 
-[`src/project/commuting_extended.py`](../../src/project/commuting_extended.py)
-(`uv run python -m project.commuting_extended`, unos 70 s; `--long` agrega z = −1/3).
+[`src/project/commuting_a4.py`](../../src/project/commuting_a4.py)
+(`uv run python -m project.commuting_a4`, alrededor de un minuto; `--long` agrega M = 10).
 
-### Nueve pesos: las caras de par vertical
+En A_4 una cara es un par (W^0, W^1) de caras binarias, una por tipo: catorce pesos. Las
+filas viven en cilindros de circunferencia par M, y cada fila lleva la paridad de su primera
+altura; filas consecutivas tienen paridades opuestas.
 
-Las caras (10;10) y (01;01) conservan las filas hard-square, pero permiten un sitio ocupado
-en dos filas seguidas. Cada par vertical usa una de cada una, así que entran en T_N solo
-por el producto w7·w8. Con ellas aparecen tres compañeros evidentes más:
-- la identidad I, que viene de W = 1 en 0000, 1010 y 0101;
-- K·S y K·S⁻¹: hard squares con la exclusión vertical cambiada por una diagonal, que son
-  productos de matrices que conmutan.
+- **Reducción.** Factores de esquina y una semejanza diagonal de las filas, ambos realizados
+  en las caras, llevan toda presentación de actividad z a Q0 ⊕ Q0, la misma cara Q0 en los
+  dos tipos. Está comprobado en forma simbólica.
+- **Simetrías triviales.** Son seis:
+  - la escala;
+  - W^0 ↦ μW^0 con W^1 ↦ W^1/μ;
+  - cuatro gauges de esquina, dos en la fila de arriba y dos en la de abajo.
 
-Resultado a z = 2 (y a z = −1/3 con `--long`):
+  Todas multiplican T_M por un escalar.
+- **Pregunta local.** Si el tangente en Q del conjunto de soluciones tiene dimensión 6, cerca
+  de Q las soluciones son la órbita de las simetrías. Entonces toda familia analítica que
+  pase por Q y conmute tiene T_M proporcional a T_M(Q). Es la versión con matrices de
+  transferencia del Teorema B en A_4.
+- **Por qué solo local.** Con catorce pesos, la eliminación global del caso binario no es
+  factible con sympy. No se clasifican los compañeros lejos de Q.
 
-| N | clases de T_N(W) que conmutan con K = T_N(Q0) |
-|---|---|
-| 4 | K, S, S⁻¹, I, K·S, K·S⁻¹ y una solución esporádica de rango 1 |
-| 5 | las mismas seis y dos esporádicas, de rango 8 y 11 |
-| 6 | exactamente K, S, S⁻¹, I, K·S, K·S⁻¹ |
+| M | filas | tangente en Q |
+|---|---|---|
+| 4 | 14 | 7: una dirección más que las triviales |
+| 6 | 36 | 6 para todo z ≠ 0 (el mcd de los menores 8 × 8 divide a z¹²) |
+| 8 | 94 | 6 en z = 2, −1, 1/3, −1/4, 7/5 |
+| 10 | 246 | 6 en los mismos cinco valores (`--long`) |
 
-Con N = 6, T_6(W) es múltiplo de K solo en soportes sin par vertical (w7·w8 = 0). Así,
-tampoco con nueve pesos hay una familia que pase por Q: cerca de Q0 las seis clases son
-puntos distintos del espacio proyectivo de matrices, y una curva continua de matrices
-tiene que quedarse en la clase de K.
-
-### Dieciséis caras: el bloque fuera de hard squares no se ve
-
-Con pesos en caras con dos sitios ocupados vecinos en horizontal, T_N(W) actúa sobre
-todas las filas binarias.
-
-- **Bloques.** La cara de hard squares extendida por cero, Q̂, cumple
-  T_N(Q̂) = T_N(Q) ⊕ 0 (filas hard-square primero).
-- **Reducción a nueve pesos.** det C_N = ±1 para 2 ≤ N ≤ 12, así que T_N(Q) es invertible
-  si z ≠ 0. Entonces [T_N(Q̂), T_N(W)] = 0 equivale a tres condiciones:
-  - el bloque hard-square de T_N(W), que solo depende de los nueve pesos de arriba,
-    conmuta con T_N(Q);
-  - los dos bloques fuera de la diagonal se anulan;
-  - el bloque de las otras filas queda libre.
-- **Una familia desacoplada.** Por eso hay una familia trivial que conmuta:
-  W_u = Q̂ + u·[1111] tiene T_N(W_u) = T_N(Q) ⊕ u^N E, con E la proyección sobre la fila
-  totalmente ocupada. Comprobado para N = 2, …, 6.
-  - Sus matrices conmutan con T_N(Q̂) y entre sí para todo N.
-  - Por la Proposición 4.3 del paper no viene de una familia de Yang–Baxter.
-
-Es un ejemplo explícito de por qué el teorema de Lochak–Maillard pide positividad: con
-pesos nulos, la conmutación para todo N no implica una relación local. En las dieciséis
-caras, entonces, la conmutación sola no puede excluir familias. El argumento local de la
-Proposición 4.3 es necesario, y en el sector hard-square la conmutación se reduce al caso
-de nueve pesos.
+- **Sin usar la reducción.** Una presentación escalonada, con factores de esquina distintos
+  en cada tipo y s₁/s₀ = 3/2, da lo mismo con M = 6.
+- **Control.** Con hard hexagons en ambos tipos, el tangente tiene dimensión 7 (M = 6 y 8).
+  La dirección extra es no escalonada: es la de la familia de Baxter en el alfabeto binario.
+- **M = 4 es chico.** Pasa lo mismo que con N = 4 en el caso binario.
 
 ## Qué se sigue
 
@@ -181,25 +167,26 @@ de nueve pesos.
 - **Tampoco hay compañeros aislados.** Ninguna cara de siete pesos, cerca de Q o lejos,
   conmuta con hard squares para esos tamaños, salvo las evidentes. Esto responde la
   pregunta de la Sección 5.2 en el caso de "ausencia".
-- **Con nueve pesos, lo mismo.** Con N = 6 (z = 2 y z = −1/3), los únicos compañeros son
-  K, S^{±1}, I y K·S^{±1}, y ninguna familia pasa por Q.
-- **Con dieciséis caras, la conmutación no alcanza.** Hay familias desacopladas que
-  conmutan sin ser de Yang–Baxter, así que ahí el resultado es el de la Proposición 4.3,
-  no este cálculo.
+- **En A_4, lo mismo cerca de hard squares.** Ninguna familia analítica de caras de A_4 que
+  pase por una presentación tiene matrices de transferencia que conmuten con la de hard
+  squares para M = 6 u 8, salvo las proporcionales.
 - **Es complementario al Teorema B.** El teorema cubre familias de Yang–Baxter en los
-  alfabetos binario (con las 16 caras) y A_4. Este cálculo no supone relación local, y
-  cubre los siete pesos admisibles y, con N = 6, los nueve que conservan las filas
-  hard-square.
+  alfabetos binario y A_4. Este cálculo no supone relación local: en el binario cubre todas
+  las caras de siete pesos, y en A_4 las familias que pasan por hard squares. Juntos dan la
+  versión sin Yang–Baxter del Teorema B en los dos alfabetos del Teorema A, para estos
+  tamaños.
 
 ## Límites
 
-- **Qué cubre.** Siete pesos para N ≤ 7 y todo z ≠ 0. Nueve pesos para N ≤ 6, a z = 2 y
-  z = −1/3 (`--long`).
-  - Con dieciséis caras, la conmutación con Q̂ no restringe el bloque de filas que no son
-    hard-square.
-  - No cubre alturas ocultas, bloques ni A_4.
-- **N finito.** El tangente vale para todo z solo con N = 5 y 6; para N ≤ 12 vale en cinco
-  valores de z.
+- **Qué cubre.**
+  - Binario: siete pesos, N ≤ 7 y todo z ≠ 0.
+  - A_4: solo cerca de una presentación, con M ≤ 8 (10 con `--long`).
+  - No cubre alturas ocultas ni bloques.
+  - Tampoco cubre el binario con 1∼1: ahí T_N(Q̂) = T_N(Q) ⊕ 0, y la conmutación no
+    restringe las filas con vecinos ocupados. Ese caso, junto con el de nueve pesos, se
+    calculó y se retiró porque no responde una pregunta del paper (commit b897c79).
+- **Tamaño finito.** En el binario, el tangente vale para todo z solo con N = 5 y 6; para
+  N ≤ 12 vale en cinco valores de z. En A_4 vale para todo z con M = 6.
 - **Herramienta.** Todas las bases de Gröbner son de sympy. El cruce independiente usa otro
   algoritmo (F5B), otro orden y otro corte de gauge, pero el mismo sistema de álgebra
   computacional.
@@ -208,7 +195,7 @@ de nueve pesos.
 
 ## Posibles extensiones
 
-1. Nueve pesos con z simbólico y N = 7.
+1. A_4 lejos de hard squares (eliminación global), con otro sistema de álgebra
+   computacional.
 2. Conmutación mutua dentro de una familia candidata, en lugar de conmutación con Q.
 3. El grupo de inversión de Bellon–Maillard–Viallet (Sección 5.3).
-4. A_4: la conmutación con la matriz escalonada T_1 T_0 de la Observación 2.11.

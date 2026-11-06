@@ -42,7 +42,7 @@ evidence:
     kind: code
     path: src/project/commuting_crosscheck.py
     description: Implementación independiente del cálculo de siete pesos (matrices explícitas, F5B, grevlex).
-  - evidence_id: commuting-extended-module
+  - evidence_id: commuting-a4-module
     kind: code
-    path: src/project/commuting_extended.py
-    description: Nueve pesos (caras de par vertical) y dieciséis caras (estructura por bloques, familia desacoplada).
+    path: src/project/commuting_a4.py
+    description: Tangente del problema de conmutación en A_4 en una presentación de hard squares, con reducción, simetrías triviales y control con hard hexagons.
