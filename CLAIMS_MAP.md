@@ -70,3 +70,25 @@ headers below match the headers printed by the script.
 | Paper statement | Check |
 |---|---|
 | Proposition 2.5 (Classification) | `--classify`: of the 86 828 labelled connected alphabets on 2 to 5 heights, with occupied and empty heights and no two occupied heights adjacent, exactly two isomorphism classes survive; they are compared by isomorphism, occupations included, with the binary alphabet and `A_4`. This illustrates the proposition, which is proved in the text. |
+
+## Exploratory: transfer matrices commuting with hard squares (not in the paper)
+
+These checks are printed by `uv run python -m project.commuting` (add `--long` for the
+rows marked so), not by `verify_certificates.py`. They answer the question of Section 5.2
+of the J. Phys. A version; see
+[`docs/simulations/commuting-small-n.md`](docs/simulations/commuting-small-n.md).
+
+| Statement | Check |
+|---|---|
+| `T_N(Q) = D_CD C_N D_AB`; only `z` matters; corner gauges; the shift commutes | `N=2..6: T_N(Q) = D_CD C_N D_AB, conjugation to Q0, corner gauges, shift commutes` |
+| For `N = 2, 3` the commuting faces form positive-dimensional sets | `N=2`, `N=3`: positive-dimensional solutions on the full support besides Q0 |
+| For `N = 4` only multiples of `T_N(Q)`, `S`, `S^{-1}`; `Q` is a double point | `N=4`: solutions only on the supports of Q0, delta_{b,c} and delta_{a,d}; the only point is Q0, not reduced |
+| For `N = 5, 6` (and `7`, `--long`) exactly those three, reduced, for every `z != 0` | `N=5`, `N=6`, `N=7`: exactly W ~ Q0, delta_{b,c}, delta_{a,d} |
+| Tangent space at `Q` is trivial for every `z != 0` with `N = 5, 6` | invariant factors over Q[z] are `[1, 1, z**2, z**2]` |
+| Tangent space at `Q` is trivial for `5 <= N <= 9` (`12` with `--long`) at five activities | `z=...: tangent dimensions ...` |
+| Positive control: hard hexagons have a curve of commuting partners on Baxter's surface | the full support carries a curve of commuting partners, on Baxter's surface F = 0; the curve is the same for every N computed |
+| Independent cross-check, `python -m project.commuting_crosscheck` | `z=..., N=4,5,6`: only the classes of T_N(Q0), S, S^-1; Q0 double at N=4, reduced from N=5; Jacobian ranks |
+| A_4, `python -m project.commuting_a4`: every presentation reduces to `Q0 (+) Q0`; six trivial symmetries | `M=4: the six trivial symmetries multiply T_M by lam^M, ...` |
+| A_4: near a presentation, only the trivial directions commute, for `M = 6, 8` (`10` with `--long`) at five activities | `M=...: tangent dimension ... (only the six trivial directions)` |
+| A_4: the same for every `z != 0` with `M = 6` | `over Q[z], the gcd of the 8 x 8 minors ... divides z**...` |
+| A_4 control: hard hexagons on both types have one more, unstaggered, direction | `hard hexagons ... one more direction, and it is unstaggered` |

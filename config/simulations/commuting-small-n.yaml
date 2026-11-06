@@ -1,0 +1,66 @@
+version: 1
+protocol_id: commuting-small-n
+issue: 1
+# Cálculo exploratorio, fuera del paper y del archivo auxiliar de arXiv. Responde la
+# pregunta de la Sección 5.2 de la versión para J. Phys. A (PR #54 del repositorio del
+# paper). Aritmética exacta (sympy), sin semillas ni parámetros aleatorios.
+question: >-
+  ¿Qué caras binarias W, con pesos en las siete caras admisibles, tienen una matriz de
+  transferencia de fila que conmuta con la de una cara hard-square pura Q,
+  [T_N(Q), T_N(W)] = 0, para N pequeño? No se supone ninguna relación local.
+expectation: >-
+  Soluciones evidentes: los múltiplos de Q (salvo los gauges de esquina) y las caras
+  delta_{b,c} y delta_{a,d}, cuyas matrices son el desplazamiento y su inverso. La
+  pregunta es si hay otras y desde qué N desaparecen.
+method:
+  reduction: >-
+    T_N(Q) = D_CD C_N D_AB. Conjugar por D_CD lleva el problema para Q al problema para
+    Q0 = (1,1,1,1,1,z,z), con z = ABCD, y W a W (CD)^(a-c). Escala y dos gauges de
+    esquina (W -> W t^(a-b) s^(c-d), que no cambian T_N) son las simetrías triviales.
+  global: >-
+    Descomposición por soporte (conjunto de pesos no nulos). En cada soporte se fija a 1
+    un conjunto maximal de pesos con caracteres independientes y se satura por el
+    producto de los demás y por z. Base de Gröbner lex sobre Q, con z simbólico.
+  tangent: >-
+    Espacio tangente en Q0: rango exacto (racional) para z fijo, y factores invariantes
+    sobre Q[z] de las ecuaciones en las direcciones no triviales para todo z.
+  positive_control: >-
+    El mismo cálculo con la cara de hard hexagons (1,1,1,1,1,z,0) en lugar de Q0, a z = 2,
+    debe encontrar una curva de compañeros que conmutan, sobre la superficie de Baxter
+    F(z,X,Y) = zXY(XY - X - Y) - (X - 1)(Y - 1) = 0.
+  crosscheck: >-
+    src/project/commuting_crosscheck.py, sin importar el primer módulo: ecuaciones del
+    producto explícito de matrices, otro corte de gauge, bases grevlex con F5B, z = 3,
+    -2/7 y 5/2, clasificación de T_N(W) en cada punto y jacobiano simbólico.
+  a4: >-
+    src/project/commuting_a4.py: en A_4, tangente del conjunto de soluciones en una
+    presentación de hard squares. Reducción a Q0 (+) Q0, seis simetrías triviales, rango
+    exacto a z fijo y menores 8 x 8 sobre Q[z]; control con hard hexagons en ambos tipos.
+parameters:
+  global_sizes: {default: [2, 3, 4, 5, 6], long: [2, 3, 4, 5, 6, 7]}
+  tangent_sizes: {default: "2..9", long: "2..12"}
+  tangent_symbolic_sizes: [5, 6]
+  tangent_activities: ["2", "-1", "1/3", "-1/4", "7/5"]
+  control_sizes: {default: [4, 5], long: [4, 5, 6]}
+  a4_sizes: {default: [4, 6, 8], long: [4, 6, 8, 10]}
+  a4_symbolic_sizes: [6]
+command:
+  default: uv run python -m project.commuting
+  long: uv run python -m project.commuting --long
+  crosscheck: uv run python -m project.commuting_crosscheck
+  a4: uv run python -m project.commuting_a4 [--long]
+expected: "Todas las líneas [PASS] y 'All checks passed.'"
+approximate_runtime: {default: "20 s", long: "3 min", crosscheck: "40 s", a4: "1 min; --long 1,5 min"}
+deviations:
+  - >-
+    Las corridas exploratorias se hicieron el 2026-11-05 en una carpeta temporal antes
+    de escribir este protocolo, con el mismo método y los mismos valores de z. El
+    módulo las reproduce; al ser un cálculo exacto no hubo parámetros que ajustar.
+  - >-
+    El cruce independiente y el cálculo en A_4 se agregaron el 2026-11-06 a pedido del
+    autor, después de ver los resultados del primer módulo. El cruce iba a usar z
+    simbólico, pero con F5B resultó demasiado lento y se pasó a tres actividades fijas.
+    Una extensión a nueve y dieciséis caras binarias se calculó y se retiró el mismo día,
+    porque no responde una pregunta del paper (commit b897c79). En A_4 se hizo solo la
+    parte local, que es la que corresponde al Teorema B; la global no es factible con sympy.
+results: docs/simulations/commuting-small-n.md

@@ -134,3 +134,80 @@ claims:
     limitations: [Ilustra la Proposición 2.5, que se prueba en el texto; no es parte de la prueba.]
     evidence: [verify-script, scenarios, ci-verify]
     provenance: {paper_draft: "2026-10-02", program_commit: 7d9d37e}
+  # Cálculos exploratorios, fuera del paper (issue #1). No están en el archivo auxiliar
+  # de arXiv; pasan al manuscrito solo después de que el autor los revise.
+  - claim_id: commuting-small-n
+    statement: >-
+      Para N = 4, 5, 6 y 7 y todo z != 0, una cara binaria W con pesos en las siete
+      caras admisibles y T_N(W) != 0 tiene [T_N(Q), T_N(W)] = 0, con Q una cara
+      hard-square pura de actividad z, si y solo si T_N(W) es múltiplo de T_N(Q), del
+      desplazamiento S o de su inverso. Para N = 5, 6, 7 las tres soluciones son puntos
+      reducidos salvo escala y gauges de esquina; para N = 4, Q es un punto doble. Para
+      N = 2 y 3 hay componentes de dimensión 2.
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Alfabeto binario, siete pesos admisibles, N <= 7; z simbólico.
+    limitations:
+      - No cubre pesos en las caras de par vertical ni en las caras con un par horizontal, alturas ocultas, bloques ni A4.
+      - N = 7 corre solo con --long; bases de Gröbner de sympy, sin cruce con otro sistema.
+      - No es un resultado del paper; no afirma no-integrabilidad absoluta.
+    evidence: [commuting-module, commuting-protocol, commuting-note, commuting-tests]
+    provenance: {paper_draft: "J. Phys. A, PR #54, Sección 5.2", issue: 1}
+  - claim_id: commuting-tangent
+    statement: >-
+      El espacio tangente en Q a {W : [T_N(Q), T_N(W)] = 0} está generado por la escala y
+      los dos gauges de esquina para todo z != 0 con N = 5 y 6 (factores invariantes
+      1, 1, z^2, z^2 sobre Q[z]), y para 5 <= N <= 12 en z = 2, -1, 1/3, -1/4 y 7/5. Con
+      N = 4 tiene una dirección más, que no se integra.
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Alfabeto binario, siete pesos admisibles.
+    limitations: [Para N >= 7 solo en cinco valores de z; N de 10 a 12 solo con --long.]
+    evidence: [commuting-module, commuting-note, commuting-tests]
+    provenance: {paper_draft: "J. Phys. A, PR #54, Sección 5.2", issue: 1}
+  - claim_id: commuting-control-hard-hexagons
+    statement: >-
+      Con la cara de hard hexagons a z = 2, el mismo cálculo encuentra para N = 4, 5 y 6
+      una misma curva de caras cuyas matrices conmutan con la suya, contenida en la
+      superficie de Baxter F(z,X,Y) = 0. El método detecta una familia que conmuta cuando
+      existe.
+    claim_type: methodology
+    status: supported
+    lifecycle: active
+    scope: Control positivo del cálculo commuting-small-n.
+    limitations: [Un valor de z; N = 6 solo con --long.]
+    evidence: [commuting-module, commuting-note, commuting-tests]
+    provenance: {issue: 1}
+  - claim_id: commuting-crosscheck
+    statement: >-
+      Una implementación independiente coincide con commuting-small-n para N = 4, 5 y 6 en
+      z = 3, -2/7 y 5/2: solo las clases de T_N(Q0), S y S^-1, Q0 doble con N = 4 y puntos
+      reducidos desde N = 5, y el mismo rango del jacobiano en Q0. Usa ecuaciones del
+      producto explícito de matrices, otro corte de gauge, bases grevlex con F5B y
+      clasificación de T_N(W) en cada punto.
+    claim_type: methodology
+    status: supported
+    lifecycle: active
+    scope: Alfabeto binario, siete pesos admisibles.
+    limitations: [Mismo sistema de álgebra computacional (sympy); actividades fijas, no z simbólico.]
+    evidence: [commuting-crosscheck-module, commuting-note, commuting-tests]
+    provenance: {issue: 1}
+  - claim_id: commuting-a4-local
+    statement: >-
+      En el alfabeto A_4, sea Q una presentación de hard squares con actividad z no nula.
+      Para circunferencia M = 6 y 8 (y 10 con --long), a z = 2, -1, 1/3, -1/4 y 7/5, y para
+      todo z no nulo con M = 6, el espacio tangente en Q del conjunto de
+      caras W con [T_M(Q), T_M(W)] = 0 es el de las seis simetrías triviales. Por eso
+      ninguna familia analítica de caras de A_4 que pase por Q tiene matrices de
+      transferencia que conmuten con T_M(Q), salvo las proporcionales a T_M(Q). Con M = 4
+      hay una dirección más. Control: con hard hexagons en ambos tipos hay una dirección más,
+      no escalonada.
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Alfabeto A_4, cerca de una presentación de hard squares.
+    limitations: [Solo local: no clasifica los compañeros lejos de Q.]
+    evidence: [commuting-a4-module, commuting-note, commuting-tests]
+    provenance: {issue: 1}
