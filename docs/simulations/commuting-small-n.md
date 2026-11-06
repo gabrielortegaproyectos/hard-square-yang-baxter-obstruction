@@ -4,8 +4,9 @@ Issue #1. Protocolo: [`config/simulations/commuting-small-n.yaml`](../../config/
 Código: [`src/project/commuting.py`](../../src/project/commuting.py) (`uv run python -m project.commuting`,
 con `--long` para N = 7 y el tangente hasta N = 12). Pruebas: [`tests/test_commuting.py`](../../tests/test_commuting.py).
 
-Es un cálculo exploratorio y no está en el paper ni en el archivo auxiliar de arXiv;
-`verify_certificates.py` no cambia. Entra al manuscrito solo después de que el autor lo revise.
+Es un cálculo exploratorio y no está en el archivo auxiliar de arXiv;
+`verify_certificates.py` no cambia. El autor pidió llevarlo a la Sección 5.2 de la versión
+para J. Phys. A (PR #54 del repositorio del paper), que sigue pendiente de su lectura.
 
 ## Pregunta
 
