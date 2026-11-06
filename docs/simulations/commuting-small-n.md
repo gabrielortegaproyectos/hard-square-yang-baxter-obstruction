@@ -93,6 +93,83 @@ hard squares no es un artefacto del código. Además, las dos partes del cálcul
 el tangente (código lineal) y la variedad completa (Gröbner) dan un punto doble con
 N = 4 y un punto reducido desde N = 5.
 
+### Cruce independiente
+
+[`src/project/commuting_crosscheck.py`](../../src/project/commuting_crosscheck.py)
+(`uv run python -m project.commuting_crosscheck`, unos 40 s) repite el cálculo de siete
+pesos sin importar nada del primer módulo:
+
+- **Otras ecuaciones.** Usa todas las entradas del producto explícito de matrices
+  T_N(Q0) T_N(W) − T_N(W) T_N(Q0), sin reducir por rotación, con una enumeración de filas
+  escrita de nuevo.
+- **Otra resolución.** En cada soporte fija a 1 otro conjunto de pesos. Usa bases grevlex
+  con el algoritmo F5B, sin eliminación. En cada punto clasifica T_N(W) comparándola con
+  T_N(Q0), S y S⁻¹, y lee la multiplicidad de la dimensión del cociente.
+- **Otro tangente.** Calcula el jacobiano de las ecuaciones explícitas por derivación
+  simbólica.
+- **Otras actividades.** Usa z = 3, −2/7 y 5/2 en lugar de z simbólico; con z simbólico,
+  F5B es demasiado lento.
+
+Para N = 4, 5 y 6 da lo mismo que el primer método:
+- solo las tres clases evidentes;
+- Q0 doble con N = 4 y reducido desde N = 5;
+- el mismo rango del jacobiano.
+
+Con N = 4, cada soporte de desplazamiento tiene dos órbitas, δ y su variante con signo.
+Ambas dan T_4 = S (o S⁻¹).
+
+## Más allá de los siete pesos
+
+[`src/project/commuting_extended.py`](../../src/project/commuting_extended.py)
+(`uv run python -m project.commuting_extended`, unos 70 s; `--long` agrega z = −1/3).
+
+### Nueve pesos: las caras de par vertical
+
+Las caras (10;10) y (01;01) conservan las filas hard-square, pero permiten un sitio ocupado
+en dos filas seguidas. Cada par vertical usa una de cada una, así que entran en T_N solo
+por el producto w7·w8. Con ellas aparecen tres compañeros evidentes más:
+- la identidad I, que viene de W = 1 en 0000, 1010 y 0101;
+- K·S y K·S⁻¹: hard squares con la exclusión vertical cambiada por una diagonal, que son
+  productos de matrices que conmutan.
+
+Resultado a z = 2 (y a z = −1/3 con `--long`):
+
+| N | clases de T_N(W) que conmutan con K = T_N(Q0) |
+|---|---|
+| 4 | K, S, S⁻¹, I, K·S, K·S⁻¹ y una solución esporádica de rango 1 |
+| 5 | las mismas seis y dos esporádicas, de rango 8 y 11 |
+| 6 | exactamente K, S, S⁻¹, I, K·S, K·S⁻¹ |
+
+Con N = 6, T_6(W) es múltiplo de K solo en soportes sin par vertical (w7·w8 = 0). Así,
+tampoco con nueve pesos hay una familia que pase por Q: cerca de Q0 las seis clases son
+puntos distintos del espacio proyectivo de matrices, y una curva continua de matrices
+tiene que quedarse en la clase de K.
+
+### Dieciséis caras: el bloque fuera de hard squares no se ve
+
+Con pesos en caras con dos sitios ocupados vecinos en horizontal, T_N(W) actúa sobre
+todas las filas binarias.
+
+- **Bloques.** La cara de hard squares extendida por cero, Q̂, cumple
+  T_N(Q̂) = T_N(Q) ⊕ 0 (filas hard-square primero).
+- **Reducción a nueve pesos.** det C_N = ±1 para 2 ≤ N ≤ 12, así que T_N(Q) es invertible
+  si z ≠ 0. Entonces [T_N(Q̂), T_N(W)] = 0 equivale a tres condiciones:
+  - el bloque hard-square de T_N(W), que solo depende de los nueve pesos de arriba,
+    conmuta con T_N(Q);
+  - los dos bloques fuera de la diagonal se anulan;
+  - el bloque de las otras filas queda libre.
+- **Una familia desacoplada.** Por eso hay una familia trivial que conmuta:
+  W_u = Q̂ + u·[1111] tiene T_N(W_u) = T_N(Q) ⊕ u^N E, con E la proyección sobre la fila
+  totalmente ocupada. Comprobado para N = 2, …, 6.
+  - Sus matrices conmutan con T_N(Q̂) y entre sí para todo N.
+  - Por la Proposición 4.3 del paper no viene de una familia de Yang–Baxter.
+
+Es un ejemplo explícito de por qué el teorema de Lochak–Maillard pide positividad: con
+pesos nulos, la conmutación para todo N no implica una relación local. En las dieciséis
+caras, entonces, la conmutación sola no puede excluir familias. El argumento local de la
+Proposición 4.3 es necesario, y en el sector hard-square la conmutación se reduce al caso
+de nueve pesos.
+
 ## Qué se sigue
 
 - **No hay familias que pasen por Q.** Sea W(u) una familia analítica de caras binarias de
@@ -103,32 +180,34 @@ N = 4 y un punto reducido desde N = 5.
 - **Tampoco hay compañeros aislados.** Ninguna cara de siete pesos, cerca de Q o lejos,
   conmuta con hard squares para esos tamaños, salvo las evidentes. Esto responde la
   pregunta de la Sección 5.2 en el caso de "ausencia".
+- **Con nueve pesos, lo mismo.** Con N = 6 (z = 2 y z = −1/3), los únicos compañeros son
+  K, S^{±1}, I y K·S^{±1}, y ninguna familia pasa por Q.
+- **Con dieciséis caras, la conmutación no alcanza.** Hay familias desacopladas que
+  conmutan sin ser de Yang–Baxter, así que ahí el resultado es el de la Proposición 4.3,
+  no este cálculo.
 - **Es complementario al Teorema B.** El teorema cubre familias de Yang–Baxter en los
-  alfabetos binario (con las 16 caras) y A_4. Este cálculo no supone relación local, pero
-  solo cubre los siete pesos admisibles.
+  alfabetos binario (con las 16 caras) y A_4. Este cálculo no supone relación local, y
+  cubre los siete pesos admisibles y, con N = 6, los nueve que conservan las filas
+  hard-square.
 
 ## Límites
 
-- **Solo siete pesos.** Hay caras binarias que no cubre:
-  - Las caras de par vertical (10;10) y (01;01) conservan las filas hard-square, pero
-    cada par vertical aporta dos de ellas. Por eso el tangente no las ve, y hace falta
-    un cálculo global con nueve pesos.
-  - Las caras con un par horizontal hacen actuar T_N(W) sobre todas las filas binarias.
-    Ahí la matriz de Q extendida por cero es T_N(Q) ⊕ 0, y donde T_N(Q) es invertible la
-    conmutación además anula los bloques fuera de la diagonal.
-
-  Tampoco cubre alturas ocultas, bloques ni A_4.
-- **N finito.** El cálculo global llega a N ≤ 7. El tangente vale para todo z solo con
-  N = 5 y 6; para N ≤ 12 vale en cinco valores de z.
-- **Herramienta.** Las bases de Gröbner son de sympy (lex). Las respaldan el control
-  positivo y la concordancia entre el cálculo tangente y el global; no se cruzaron con
-  otro sistema de álgebra computacional.
+- **Qué cubre.** Siete pesos para N ≤ 7 y todo z ≠ 0. Nueve pesos para N ≤ 6, a z = 2 y
+  z = −1/3 (`--long`).
+  - Con dieciséis caras, la conmutación con Q̂ no restringe el bloque de filas que no son
+    hard-square.
+  - No cubre alturas ocultas, bloques ni A_4.
+- **N finito.** El tangente vale para todo z solo con N = 5 y 6; para N ≤ 12 vale en cinco
+  valores de z.
+- **Herramienta.** Todas las bases de Gröbner son de sympy. El cruce independiente usa otro
+  algoritmo (F5B), otro orden y otro corte de gauge, pero el mismo sistema de álgebra
+  computacional.
 - **No es un teorema del paper.** Nada aquí afirma no-integrabilidad absoluta, ni dice
   nada sobre κ, la D-finitud o la frontera natural.
 
 ## Posibles extensiones
 
-1. Nueve pesos (siete más las dos caras de par vertical) sobre filas hard-square, y las
-   dieciséis caras con la condición de bloques.
+1. Nueve pesos con z simbólico y N = 7.
 2. Conmutación mutua dentro de una familia candidata, en lugar de conmutación con Q.
 3. El grupo de inversión de Bellon–Maillard–Viallet (Sección 5.3).
+4. A_4: la conmutación con la matriz escalonada T_1 T_0 de la Observación 2.11.

@@ -87,3 +87,6 @@ of the J. Phys. A version; see
 | Tangent space at `Q` is trivial for every `z != 0` with `N = 5, 6` | invariant factors over Q[z] are `[1, 1, z**2, z**2]` |
 | Tangent space at `Q` is trivial for `5 <= N <= 9` (`12` with `--long`) at five activities | `z=...: tangent dimensions ...` |
 | Positive control: hard hexagons have a curve of commuting partners on Baxter's surface | the full support carries a curve of commuting partners, on Baxter's surface F = 0; the curve is the same for every N computed |
+| Independent cross-check, `python -m project.commuting_crosscheck` | `z=..., N=4,5,6`: only the classes of T_N(Q0), S, S^-1; Q0 double at N=4, reduced from N=5; Jacobian ranks |
+| Nine weights (vertical-pair faces), `python -m project.commuting_extended` | `N=6`: every commuting T_6(W) is a multiple of K, S, S^-1, I, K S or K S^-1; a multiple of K only without the vertical pair |
+| Sixteen faces | `det C_N = +-1`; `T_N(Q-hat) = T_N(Q) (+) 0`; the decoupled family `Q-hat + u[1111]` commutes for every u |

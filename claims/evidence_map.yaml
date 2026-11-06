@@ -38,3 +38,11 @@ evidence:
     kind: code
     path: tests/test_commuting.py
     description: Pruebas de N = 4, 5 (y 6, marcada slow), del tangente y del control.
+  - evidence_id: commuting-crosscheck-module
+    kind: code
+    path: src/project/commuting_crosscheck.py
+    description: Implementación independiente del cálculo de siete pesos (matrices explícitas, F5B, grevlex).
+  - evidence_id: commuting-extended-module
+    kind: code
+    path: src/project/commuting_extended.py
+    description: Nueve pesos (caras de par vertical) y dieciséis caras (estructura por bloques, familia desacoplada).

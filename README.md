@@ -67,6 +67,11 @@ uv run python -m project.commuting
 
 - **Default run:** about 20 seconds (`N <= 6`, tangent space up to `N = 9`).
 - **`--long`:** about 3 minutes; adds `N = 7` and the tangent space up to `N = 12`.
+- **Independent cross-check:** `uv run python -m project.commuting_crosscheck` (about 40 seconds).
+- **Beyond the seven weights:** `uv run python -m project.commuting_extended` (about 70 seconds)
+  adds the two vertical-pair faces, where the identity and `K S^{±1}` join the evident partners,
+  and the sixteen binary faces, where commutation does not see the rows that are not
+  hard-square rows.
 
 ## Relation to the paper
 

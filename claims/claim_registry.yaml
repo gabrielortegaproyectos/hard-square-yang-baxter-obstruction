@@ -180,3 +180,46 @@ claims:
     limitations: [Un valor de z; N = 6 solo con --long.]
     evidence: [commuting-module, commuting-note, commuting-tests]
     provenance: {issue: 1}
+  - claim_id: commuting-crosscheck
+    statement: >-
+      Una implementación independiente coincide con commuting-small-n para N = 4, 5 y 6 en
+      z = 3, -2/7 y 5/2: solo las clases de T_N(Q0), S y S^-1, Q0 doble con N = 4 y puntos
+      reducidos desde N = 5, y el mismo rango del jacobiano en Q0. Usa ecuaciones del
+      producto explícito de matrices, otro corte de gauge, bases grevlex con F5B y
+      clasificación de T_N(W) en cada punto.
+    claim_type: methodology
+    status: supported
+    lifecycle: active
+    scope: Alfabeto binario, siete pesos admisibles.
+    limitations: [Mismo sistema de álgebra computacional (sympy); actividades fijas, no z simbólico.]
+    evidence: [commuting-crosscheck-module, commuting-note, commuting-tests]
+    provenance: {issue: 1}
+  - claim_id: commuting-nine-weights
+    statement: >-
+      Con los siete pesos admisibles más las caras de par vertical (10;10) y (01;01),
+      sobre filas hard-square y a z = 2 y z = -1/3: para N = 6, toda W con T_6(W) != 0
+      que conmuta con T_6(Q0) tiene T_6(W) múltiplo de K, S, S^-1, I, K S o K S^-1, y es
+      múltiplo de K solo si w7 w8 = 0. Para N = 4 y 5 hay además soluciones esporádicas
+      (una y dos clases).
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Alfabeto binario, nueve pesos, N <= 6, dos actividades.
+    limitations: [z = -1/3 solo con --long; sin z simbólico ni N = 7.]
+    evidence: [commuting-extended-module, commuting-note, commuting-tests]
+    provenance: {issue: 1}
+  - claim_id: commuting-sixteen-faces
+    statement: >-
+      Con las dieciséis caras binarias, T_N(Q-hat) = T_N(Q) (+) 0 y det C_N = +-1 para
+      2 <= N <= 12, de modo que la conmutación con T_N(Q-hat) se reduce al caso de nueve
+      pesos en el sector hard-square, con bloques fuera de la diagonal nulos y el bloque
+      de las demás filas libre. La familia Q-hat + u[1111] da T_N(Q) (+) u^N E, que conmuta
+      con T_N(Q-hat) y consigo misma para todo u (comprobado para N = 2..6); por la
+      Proposición 4.3 del paper no es una familia de Yang-Baxter.
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Alfabeto binario con 1~1 (16 caras).
+    limitations: [La reducción por bloques es álgebra lineal; las identidades se comprueban para N <= 6.]
+    evidence: [commuting-extended-module, commuting-note, commuting-tests]
+    provenance: {issue: 1}
