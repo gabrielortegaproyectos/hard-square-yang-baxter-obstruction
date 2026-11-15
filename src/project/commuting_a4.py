@@ -1,6 +1,6 @@
 """Commutation with the hard-square transfer matrix on the alphabet A_4, near the presentation.
 
-Paper 1 (arXiv:2611.06780), Section 5.2 of the J. Phys. A version, and Remark 2.11.  On A_4 a
+Paper 1 (arXiv:2611.06780), Proposition 5.2 of the J. Phys. A version, and Remark 2.11.  On A_4 a
 face weight is a pair (W^0, W^1) of binary face weights on the seven admissible faces, W^tau
 acting on the faces whose top-left height has parity tau.  On a cylinder of even circumference
 M, a row of heights is a hard-square row x together with the parity p of its first height (site

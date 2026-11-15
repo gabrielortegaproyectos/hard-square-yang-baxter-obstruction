@@ -1,0 +1,45 @@
+version: 1
+protocol_id: inversion-group
+issue: 3
+# Comprobación exacta que acompaña a la Proposición 5.4 y a la Observación 5.5 de la versión
+# para J. Phys. A (PR #54 del repositorio del paper), que el texto prueba a mano. Fuera del
+# archivo auxiliar de arXiv. Aritmética simbólica exacta (sympy), sin semillas ni puntos al azar.
+question: >-
+  ¿Qué grupo generan las dos relaciones de inversión sobre las caras binarias no nulas en
+  las siete caras admisibles, y qué le hacen a la superficie de Baxter? ¿Y en A_4?
+expectation: >-
+  La prueba a mano del paper da un grupo diédrico de orden 10 sobre (z, 1/X, 1/Y), por la
+  recurrencia de período cinco zeta_{n+1} = (1 - zeta_n)/zeta_{n-1}, que conserva la
+  superficie de Baxter. En A_4, el quinto iterado reescala las actividades de las dos
+  subredes por mu y 1/mu.
+method:
+  inversions: >-
+    Las inversiones se construyen desde la definición. Para cada valor de la diagonal fija se
+    arma la matriz de la cara en las alturas de la otra diagonal, restringida a las caras
+    admisibles, y se invierte. Las fórmulas del paper no son el punto de partida: se comparan
+    después con el resultado.
+  coordinates: >-
+    z = w1 w2 w3 w5 / w0^4, xi = w1 w5 / (w0 w6), eta = w2 w3 / (w0 w4). Cada identidad es
+    una igualdad de funciones racionales en pesos simbólicos, comprobada con cancel.
+  group: >-
+    Clausura de la identidad bajo I_1 e I_2, como aplicaciones racionales de (z, xi, eta) y
+    comparando por igualdad simbólica. Deben quedar exactamente 10 elementos.
+  weights: >-
+    (I_2 I_1)^5 aplicado a los siete pesos simbólicos. El cociente con W debe ser un escalar
+    por factores de esquina de producto 1.
+  a4: >-
+    Dos tipos de caras binarias con pesos simbólicos independientes. Regla de un paso para
+    las actividades de subred, calculada desde los pesos, y quinto iterado en las
+    coordenadas (xi_0, eta_0, xi_1, eta_1, a_0, a_1).
+parameters: {}
+command:
+  default: uv run python -m project.inversion_group
+expected: "Catorce líneas [PASS] y 'All checks passed.'"
+approximate_runtime: {default: "10 s"}
+deviations:
+  - >-
+    Las fórmulas se derivaron a mano el 2026-11-15 y ese mismo día se comprobaron con
+    aritmética racional exacta en puntos al azar, en un script temporal, antes de escribir
+    este protocolo. El módulo las comprueba en forma simbólica, sin puntos al azar. Al ser
+    un cálculo exacto no hubo parámetros que ajustar.
+results: docs/simulations/inversion-group.md

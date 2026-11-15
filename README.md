@@ -54,11 +54,11 @@ run `python verify_certificates.py`.
 
 `src/project/commuting.py` asks which binary seven-weight faces have row transfer
 matrices commuting with that of hard squares, `[T_N(Q), T_N(W)] = 0`, without assuming
-any local relation (the question of Section 5.2 of the J. Phys. A version). For
+any local relation (Propositions 5.1 and 5.2 of the J. Phys. A version). For
 `N = 4, …, 7` and every activity `z != 0`, only the evident ones do: multiples of `Q`
 and the shift and its inverse. A positive control with hard hexagons recovers a curve of
-commuting partners on Baxter's integrable surface. This computation is not part of the
-paper or of the arXiv ancillary file. Method, results and limits are in
+commuting partners on Baxter's integrable surface. This computation is not part of
+arXiv v1 or of the arXiv ancillary file. Method, results and limits are in
 [`docs/simulations/commuting-small-n.md`](docs/simulations/commuting-small-n.md).
 
 ```bash
@@ -72,6 +72,25 @@ uv run python -m project.commuting
   adds circumference 10). Near a presentation of hard squares on A_4, only the trivial
   directions commute, so no analytic family of A_4 face weights through hard squares has
   commuting transfer matrices; hard hexagons has one more direction, Baxter's.
+
+## The inversion group of binary face weights
+
+`src/project/inversion_group.py` checks, with exact symbolic arithmetic, the formulas
+behind Proposition 5.4 and Remark 5.5 of the J. Phys. A version of the paper. On binary
+face weights that are nonzero on the seven admissible faces, the two inversion relations
+act on `(z, 1/X, 1/Y)` through a dihedral group of order 10 and preserve Baxter's
+surface; on `A_4` the fifth power of their composition rescales the activities of the two
+sublattices in opposite directions. The paper proves these statements by hand, and the
+module only guards against arithmetic slips. It is not part of the arXiv ancillary file.
+What is checked, and what it does and does not support, is in
+[`docs/simulations/inversion-group.md`](docs/simulations/inversion-group.md).
+
+```bash
+uv run python -m project.inversion_group
+```
+
+- **Run:** about 10 seconds; 14 checks marked `[PASS]` and `All checks passed.`
+- **Arithmetic:** identities of rational functions in symbolic weights; no random points.
 
 ## Relation to the paper
 
@@ -94,6 +113,7 @@ The repository follows the Diagnostika Labs template `simulation-project`
 | `claims/` | the computational claims and the evidence that supports them |
 | `src/project/simulation.py` | runs a scenario: `uv run python -m project.simulation full` |
 | `src/project/commuting.py` | the exploratory commutation computation (protocol in `config/simulations/commuting-small-n.yaml`) |
+| `src/project/inversion_group.py` | the check of the inversion group (protocol in `config/simulations/inversion-group.yaml`) |
 | `skills/` | pinned agent-skill snapshot (hashes in `.diagnostika/skills.lock.json`) |
 
 Validate the structure with `uv run python scripts/validate_structure.py`.
