@@ -1,9 +1,10 @@
 version: 1
 protocol_id: commuting-small-n
 issue: 1
-# Cálculo exploratorio, fuera del paper y del archivo auxiliar de arXiv. Responde la
-# pregunta de la Sección 5.2 de la versión para J. Phys. A (PR #54 del repositorio del
-# paper). Aritmética exacta (sympy), sin semillas ni parámetros aleatorios.
+# Cálculo fuera de la v1 de arXiv y de su archivo auxiliar. Es el de las Proposiciones 5.1
+# y 5.2 de la versión para J. Phys. A (PR #54 del repositorio del paper); cuando se
+# escribió este protocolo era la Sección 5.2 de la discusión. Aritmética exacta (sympy),
+# sin semillas ni parámetros aleatorios.
 question: >-
   ¿Qué caras binarias W, con pesos en las siete caras admisibles, tienen una matriz de
   transferencia de fila que conmuta con la de una cara hard-square pura Q,

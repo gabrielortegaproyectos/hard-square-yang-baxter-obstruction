@@ -134,8 +134,8 @@ claims:
     limitations: [Ilustra la Proposición 2.5, que se prueba en el texto; no es parte de la prueba.]
     evidence: [verify-script, scenarios, ci-verify]
     provenance: {paper_draft: "2026-10-02", program_commit: 7d9d37e}
-  # Cálculos exploratorios, fuera del paper (issue #1). No están en el archivo auxiliar
-  # de arXiv; pasan al manuscrito solo después de que el autor los revise.
+  # Cálculos del issue #1, fuera de la v1 de arXiv y de su archivo auxiliar. En el borrador
+  # para J. Phys. A (PR #54, pendiente de la revisión del autor) son las Proposiciones 5.1 y 5.2.
   - claim_id: commuting-small-n
     statement: >-
       Para N = 4, 5, 6 y 7 y todo z != 0, una cara binaria W con pesos en las siete
@@ -151,9 +151,9 @@ claims:
     limitations:
       - No cubre pesos en las caras de par vertical ni en las caras con un par horizontal, alturas ocultas, bloques ni A4.
       - N = 7 corre solo con --long; bases de Gröbner de sympy, sin cruce con otro sistema.
-      - No es un resultado del paper; no afirma no-integrabilidad absoluta.
+      - No está en la v1 de arXiv; en el borrador para J. Phys. A es la Proposición 5.1. No afirma no-integrabilidad absoluta.
     evidence: [commuting-module, commuting-protocol, commuting-note, commuting-tests]
-    provenance: {paper_draft: "J. Phys. A, PR #54, Sección 5.2", issue: 1}
+    provenance: {paper_draft: "J. Phys. A, PR #54, Proposición 5.1", issue: 1}
   - claim_id: commuting-tangent
     statement: >-
       El espacio tangente en Q a {W : [T_N(Q), T_N(W)] = 0} está generado por la escala y
@@ -166,7 +166,7 @@ claims:
     scope: Alfabeto binario, siete pesos admisibles.
     limitations: [Para N >= 7 solo en cinco valores de z; N de 10 a 12 solo con --long.]
     evidence: [commuting-module, commuting-note, commuting-tests]
-    provenance: {paper_draft: "J. Phys. A, PR #54, Sección 5.2", issue: 1}
+    provenance: {paper_draft: "J. Phys. A, PR #54, Proposición 5.1", issue: 1}
   - claim_id: commuting-control-hard-hexagons
     statement: >-
       Con la cara de hard hexagons a z = 2, el mismo cálculo encuentra para N = 4, 5 y 6

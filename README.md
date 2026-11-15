@@ -54,11 +54,11 @@ run `python verify_certificates.py`.
 
 `src/project/commuting.py` asks which binary seven-weight faces have row transfer
 matrices commuting with that of hard squares, `[T_N(Q), T_N(W)] = 0`, without assuming
-any local relation (the question of Section 5.2 of the J. Phys. A version). For
+any local relation (Propositions 5.1 and 5.2 of the J. Phys. A version). For
 `N = 4, …, 7` and every activity `z != 0`, only the evident ones do: multiples of `Q`
 and the shift and its inverse. A positive control with hard hexagons recovers a curve of
-commuting partners on Baxter's integrable surface. This computation is not part of the
-paper or of the arXiv ancillary file. Method, results and limits are in
+commuting partners on Baxter's integrable surface. This computation is not part of
+arXiv v1 or of the arXiv ancillary file. Method, results and limits are in
 [`docs/simulations/commuting-small-n.md`](docs/simulations/commuting-small-n.md).
 
 ```bash

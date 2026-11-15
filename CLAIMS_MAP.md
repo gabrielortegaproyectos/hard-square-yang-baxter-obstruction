@@ -71,11 +71,11 @@ headers below match the headers printed by the script.
 |---|---|
 | Proposition 2.5 (Classification) | `--classify`: of the 86 828 labelled connected alphabets on 2 to 5 heights, with occupied and empty heights and no two occupied heights adjacent, exactly two isomorphism classes survive; they are compared by isomorphism, occupations included, with the binary alphabet and `A_4`. This illustrates the proposition, which is proved in the text. |
 
-## Exploratory: transfer matrices commuting with hard squares (not in the paper)
+## Transfer matrices commuting with hard squares (J. Phys. A version, not in arXiv v1)
 
 These checks are printed by `uv run python -m project.commuting` (add `--long` for the
-rows marked so), not by `verify_certificates.py`. They answer the question of Section 5.2
-of the J. Phys. A version; see
+rows marked so), not by `verify_certificates.py`. They are the computations behind
+Propositions 5.1 and 5.2 of the J. Phys. A version; see
 [`docs/simulations/commuting-small-n.md`](docs/simulations/commuting-small-n.md).
 
 | Statement | Check |

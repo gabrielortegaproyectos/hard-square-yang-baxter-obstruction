@@ -1,6 +1,6 @@
 """Row transfer matrices that commute with the hard-square one, for small sizes.
 
-Question (Section 5.2 of the J. Phys. A version of the paper): which binary faces W,
+Question (Proposition 5.1 of the J. Phys. A version of the paper): which binary faces W,
 with weights on the seven admissible faces, have a row transfer matrix commuting
 with that of a pure hard-square face Q,
 

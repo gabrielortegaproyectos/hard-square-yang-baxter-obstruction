@@ -4,20 +4,21 @@ Issue #1. Protocolo: [`config/simulations/commuting-small-n.yaml`](../../config/
 Código: [`src/project/commuting.py`](../../src/project/commuting.py) (`uv run python -m project.commuting`,
 con `--long` para N = 7 y el tangente hasta N = 12). Pruebas: [`tests/test_commuting.py`](../../tests/test_commuting.py).
 
-Es un cálculo exploratorio y no está en el archivo auxiliar de arXiv;
-`verify_certificates.py` no cambia. El autor pidió llevarlo a la Sección 5.2 de la versión
-para J. Phys. A (PR #54 del repositorio del paper), que sigue pendiente de su lectura.
+No está en la v1 de arXiv ni en su archivo auxiliar; `verify_certificates.py` no cambia.
+En la versión para J. Phys. A (PR #54 del repositorio del paper, pendiente de la lectura
+del autor) es el cálculo de las Proposiciones 5.1 y 5.2, en la Sección 5.1.
 
 ## Pregunta
 
-La Sección 5.2 de la versión para J. Phys. A (PR #54 del repositorio del paper) propone
-resolver, para N pequeño,
+La Sección 5.1 de la versión para J. Phys. A (PR #54 del repositorio del paper) resuelve,
+para N pequeño,
 
     [T_N(Q), T_N(W)] = 0,
 
 donde Q es una cara hard-square pura y W una cara binaria con pesos en las siete caras
-admisibles. Es la prueba que sugiere Lochak–Maillard (J. Math. Phys. 27 (1986) 593): no
-supone ninguna relación local. El Teorema B supone una ecuación de Yang–Baxter dentro
+admisibles. Es el método de condiciones necesarias de Maillard y Garel (J. Phys. A 17 (1984)
+1251 y 1257) y de Lochak y Maillard (J. Math. Phys. 27 (1986) 593): no supone ninguna
+relación local. El Teorema B supone una ecuación de Yang–Baxter dentro
 de una familia analítica; esta prueba no.
 
 ## Convenciones
@@ -166,7 +167,7 @@ altura; filas consecutivas tienen paridades opuestas.
   conmutación mutua dentro de la familia, ni N arbitrario.
 - **Tampoco hay compañeros aislados.** Ninguna cara de siete pesos, cerca de Q o lejos,
   conmuta con hard squares para esos tamaños, salvo las evidentes. Esto responde la
-  pregunta de la Sección 5.2 en el caso de "ausencia".
+  pregunta de la Sección 5.1 en el caso de "ausencia".
 - **En A_4, lo mismo cerca de hard squares.** Ninguna familia analítica de caras de A_4 que
   pase por una presentación tiene matrices de transferencia que conmuten con la de hard
   squares para M = 6 u 8, salvo las proporcionales.
