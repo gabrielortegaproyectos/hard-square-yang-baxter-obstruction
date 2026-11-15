@@ -46,3 +46,21 @@ evidence:
     kind: code
     path: src/project/commuting_a4.py
     description: Tangente del problema de conmutación en A_4 en una presentación de hard squares, con reducción, simetrías triviales y control con hard hexagons.
+  - evidence_id: inversion-module
+    kind: code
+    path: src/project/inversion_group.py
+    description: >-
+      Comprobación simbólica del grupo generado por las dos inversiones en las caras
+      binarias y en A_4. Imprime [PASS] o [FAIL].
+  - evidence_id: inversion-protocol
+    kind: config
+    path: config/simulations/inversion-group.yaml
+    description: Pregunta, método y desviaciones de la comprobación inversion-group.
+  - evidence_id: inversion-note
+    kind: document
+    path: docs/simulations/inversion-group.md
+    description: Fórmulas comprobadas, y qué respaldan y qué no.
+  - evidence_id: inversion-tests
+    kind: code
+    path: tests/test_inversion_group.py
+    description: Una prueba por comprobación; las dos más largas están marcadas slow.

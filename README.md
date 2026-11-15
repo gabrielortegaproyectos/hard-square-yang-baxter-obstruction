@@ -73,6 +73,25 @@ uv run python -m project.commuting
   directions commute, so no analytic family of A_4 face weights through hard squares has
   commuting transfer matrices; hard hexagons has one more direction, Baxter's.
 
+## The inversion group of binary face weights
+
+`src/project/inversion_group.py` checks, with exact symbolic arithmetic, the formulas
+behind Proposition 5.4 and Remark 5.5 of the J. Phys. A version of the paper. On binary
+face weights that are nonzero on the seven admissible faces, the two inversion relations
+act on `(z, 1/X, 1/Y)` through a dihedral group of order 10 and preserve Baxter's
+surface; on `A_4` the fifth power of their composition rescales the activities of the two
+sublattices in opposite directions. The paper proves these statements by hand, and the
+module only guards against arithmetic slips. It is not part of the arXiv ancillary file.
+What is checked, and what it does and does not support, is in
+[`docs/simulations/inversion-group.md`](docs/simulations/inversion-group.md).
+
+```bash
+uv run python -m project.inversion_group
+```
+
+- **Run:** about 10 seconds; 14 checks marked `[PASS]` and `All checks passed.`
+- **Arithmetic:** identities of rational functions in symbolic weights; no random points.
+
 ## Relation to the paper
 
 - **Same script as on arXiv.** `verify_certificates.py` is the ancillary file
@@ -94,6 +113,7 @@ The repository follows the Diagnostika Labs template `simulation-project`
 | `claims/` | the computational claims and the evidence that supports them |
 | `src/project/simulation.py` | runs a scenario: `uv run python -m project.simulation full` |
 | `src/project/commuting.py` | the exploratory commutation computation (protocol in `config/simulations/commuting-small-n.yaml`) |
+| `src/project/inversion_group.py` | the check of the inversion group (protocol in `config/simulations/inversion-group.yaml`) |
 | `skills/` | pinned agent-skill snapshot (hashes in `.diagnostika/skills.lock.json`) |
 
 Validate the structure with `uv run python scripts/validate_structure.py`.

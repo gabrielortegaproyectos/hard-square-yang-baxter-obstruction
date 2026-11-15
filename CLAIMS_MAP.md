@@ -92,3 +92,23 @@ of the J. Phys. A version; see
 | A_4: near a presentation, only the trivial directions commute, for `M = 6, 8` (`10` with `--long`) at five activities | `M=...: tangent dimension ... (only the six trivial directions)` |
 | A_4: the same for every `z != 0` with `M = 6` | `over Q[z], the gcd of the 8 x 8 minors ... divides z**...` |
 | A_4 control: hard hexagons on both types have one more, unstaggered, direction | `hard hexagons ... one more direction, and it is unstaggered` |
+
+## The inversion group of binary face weights (J. Phys. A version, not in arXiv v1)
+
+These checks are printed by `uv run python -m project.inversion_group`, not by
+`verify_certificates.py`. They accompany Remark 5.3, Proposition 5.4 and Remark 5.5 of the
+J. Phys. A version, which the paper proves by hand; see
+[`docs/simulations/inversion-group.md`](docs/simulations/inversion-group.md). All checks
+are identities of rational functions in symbolic weights.
+
+| Statement | Check |
+|---|---|
+| Remark 5.3, the matrices of a binary face weight along each diagonal | `the matrices in (b,c) are [[w0,w2],[w3,w4]], w1, w5, w6; in (a,d) they are ...` |
+| Proposition 5.4, proof: the inverted face weights | `I_1(W) = (w4/om, 1/w1, -w2/om, -w3/om, w0/om, 1/w5, 1/w6) with om = w0 w4 - w2 w3, and I_2 likewise` |
+| Remark 5.3: both determinants vanish exactly at `X = Y = 1` | `the determinants are w2 w3 (Y - 1) and w1 w5 (X - 1); both vanish at a pure hard-square face` |
+| Proposition 5.4, the action on `(z, xi, eta)` | `I_1: (z, xi, eta) -> (eta^2 (1-eta)^2 / z, (1-eta)/xi, eta), and I_2 with xi and eta exchanged` |
+| Proposition 5.4: both maps are involutions | `I_1 and I_2 are involutions, on the weights and on the coordinates` |
+| Proposition 5.4, proof: the recurrence of period five | `zeta_{n+1} = (1 - zeta_n)/zeta_{n-1} has period five`; `I_2 I_1 maps (zeta_0, zeta_1) to (zeta_2, zeta_3) and multiplies z by gamma(zeta_2)/gamma(zeta_1)` |
+| Proposition 5.4: `(I_2 I_1)^5` is the identity; dihedral group of order 10 | `(I_2 I_1)^5 is the identity on (z, xi, eta), and no smaller power is`; `I_1 and I_2 generate exactly 10 maps`; `(I_2 I_1)^5 W is W times a scalar and corner factors of product 1` |
+| Proposition 5.4: both inversions preserve Baxter's surface | `F o I_1 = F/(z X^2 Y) and F o I_2 = F/(z X Y^2)` |
+| Remark 5.5: on `A_4` the fifth power rescales the two sublattice activities | the one-step rules for `a_p`; `prod zeta_n` over a period and `prod (1 - zeta_n)`; `(I_2 I_1)^5 ... maps (a_0, a_1) to (mu a_0, a_1/mu), mu = (Pi_1/Pi_0)^2` |

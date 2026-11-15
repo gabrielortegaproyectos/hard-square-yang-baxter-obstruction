@@ -211,3 +211,41 @@ claims:
     limitations: [Solo local: no clasifica los compañeros lejos de Q.]
     evidence: [commuting-a4-module, commuting-note, commuting-tests]
     provenance: {issue: 1}
+  # Comprobaciones que acompañan a la Sección 5.2 de la versión para J. Phys. A (issue #3).
+  # No están en el archivo auxiliar de arXiv. Las pruebas, a mano, están en el paper.
+  - claim_id: inversion-group-binary
+    statement: >-
+      Sobre las caras binarias no nulas en las siete caras admisibles, las inversiones I_1 e
+      I_2 (de las matrices en (b,c) y en (a,d)) actúan sobre z = w1 w2 w3 w5 / w0^4,
+      xi = 1/X y eta = 1/Y por I_1(z, xi, eta) = (eta^2 (1-eta)^2 / z, (1-eta)/xi, eta) e
+      I_2(z, xi, eta) = (xi^2 (1-xi)^2 / z, xi, (1-xi)/eta). Son involuciones, (I_2 I_1)^5 es
+      la identidad y ninguna potencia menor lo es: generan exactamente 10 aplicaciones, un
+      grupo diédrico de orden 10. Sobre los pesos, (I_2 I_1)^5 es un escalar por factores de
+      esquina de producto 1. Además F o I_1 = F/(z X^2 Y) y F o I_2 = F/(z X Y^2), con F la
+      superficie de Baxter. Los determinantes de las dos matrices 2 x 2 son w2 w3 (Y - 1) y
+      w1 w5 (X - 1), y ambos se anulan en una cara hard-square pura.
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Alfabeto binario, siete pesos no nulos; identidades de funciones racionales en pesos simbólicos.
+    limitations:
+      - Comprobación de identidades algebraicas; la prueba es la de la Proposición 5.4 del paper.
+      - Un solo sistema de álgebra computacional (sympy), sin cruce con otro.
+      - No dice nada de patrones mayores (dieciséis caras, forma de vértices) ni afirma novedad.
+    evidence: [inversion-module, inversion-protocol, inversion-note, inversion-tests]
+    provenance: {paper_draft: "J. Phys. A, PR #54, Proposición 5.4", issue: 3}
+  - claim_id: inversion-group-a4
+    statement: >-
+      En A_4, con un peso binario por tipo, las inversiones actúan tipo por tipo sobre xi_t y
+      eta_t, y sobre las actividades de subred por I_1: a_p -> (1-eta_p)^2 eta_{1-p}^2 / a_p e
+      I_2: a_p -> (1-xi_{1-p})^2 xi_p^2 / a_p. El quinto iterado (I_2 I_1)^5 fija xi_t y eta_t
+      y lleva (a_0, a_1) a (mu a_0, a_1/mu), con mu = (Pi_1/Pi_0)^2 y
+      Pi_t = (1-xi_t)(1-eta_t)(xi_t+eta_t-1)/(xi_t eta_t); mu = 1 si ambos tipos tienen los
+      mismos xi y eta.
+    claim_type: finding
+    status: supported
+    lifecycle: active
+    scope: Alfabeto A_4, catorce pesos simbólicos.
+    limitations: [Comprobación de identidades algebraicas; el cálculo está indicado en la Observación 5.5 del paper.]
+    evidence: [inversion-module, inversion-protocol, inversion-note, inversion-tests]
+    provenance: {paper_draft: "J. Phys. A, PR #54, Observación 5.5", issue: 3}
