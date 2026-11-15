@@ -20,3 +20,29 @@ evidence:
     description: >-
       Workflow que ejecuta el escenario full con el entorno fijado y publica el
       artefacto verify-output.
+  - evidence_id: commuting-module
+    kind: code
+    path: src/project/commuting.py
+    description: >-
+      Cálculo exacto de [T_N(Q), T_N(W)] = 0 para N pequeño: reducción, variedad por
+      soporte, espacio tangente y control con hard hexagons. Imprime [PASS] o [FAIL].
+  - evidence_id: commuting-protocol
+    kind: config
+    path: config/simulations/commuting-small-n.yaml
+    description: Pregunta, método, parámetros y desviaciones del cálculo commuting-small-n.
+  - evidence_id: commuting-note
+    kind: document
+    path: docs/simulations/commuting-small-n.md
+    description: Resultados, control positivo, consecuencias y límites.
+  - evidence_id: commuting-tests
+    kind: code
+    path: tests/test_commuting.py
+    description: Pruebas de N = 4, 5 (y 6, marcada slow), del tangente y del control.
+  - evidence_id: commuting-crosscheck-module
+    kind: code
+    path: src/project/commuting_crosscheck.py
+    description: Implementación independiente del cálculo de siete pesos (matrices explícitas, F5B, grevlex).
+  - evidence_id: commuting-a4-module
+    kind: code
+    path: src/project/commuting_a4.py
+    description: Tangente del problema de conmutación en A_4 en una presentación de hard squares, con reducción, simetrías triviales y control con hard hexagons.
